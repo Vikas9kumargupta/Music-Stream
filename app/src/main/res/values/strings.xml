@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Music Stream</string>
+    <string name="categories">Categories</string>
+    <string name="album">Album</string>
+</resources>
