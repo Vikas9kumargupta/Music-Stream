@@ -3,6 +3,7 @@ package com.example.musicstream
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,11 +13,16 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.musicstream.Adapter.Category
 import com.example.musicstream.Adapter.SectionSongListAdapter
+import com.example.musicstream.Authentication.LoginActivity
 import com.example.musicstream.databinding.ActivityMainBinding
 import com.example.musicstream.models.CategoryModel
+import com.example.musicstream.models.SongModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.core.View
 import com.google.firebase.firestore.toObject
+import com.google.firebase.firestore.toObjects
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +37,35 @@ class MainActivity : AppCompatActivity() {
         setupSections("section_1",binding.section1MainLayout,binding.section1Title,binding.section1RecyclerView)
         setupSections("section_2",binding.section2MainLayout,binding.section2Title,binding.section2RecyclerView)
         setupSections("section_3",binding.section3MainLayout,binding.section3Title,binding.section3RecyclerView)
+        setupMostlyPlayed("mostly_played",binding.mostlyPlayedMainLayout,binding.mostlyPlayedTitle,binding.mostlyPlayedRecyclerView)
 
+        binding.optionBtn.setOnClickListener{
+            showPopupMenu()
+        }
+
+    }
+
+    private fun showPopupMenu() {
+        val popupMenu = PopupMenu(this,binding.optionBtn)
+        val inflator = popupMenu.menuInflater
+        inflator.inflate(R.menu.option_menu,popupMenu.menu)
+        popupMenu.show()
+        popupMenu.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.logout ->{
+                    logout()
+                    true
+                }
+            }
+            false
+        }
+    }
+
+    private fun logout() {
+        MyExoPlayer.getInstance()?.release()
+        FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this,LoginActivity::class.java))
+        finish()
     }
 
     override fun onResume() {
@@ -86,5 +120,34 @@ class MainActivity : AppCompatActivity() {
         }?:run{
             binding.playerView.visibility = android.view.View.GONE
         }
+    }
+
+    private fun setupMostlyPlayed(id: String, mainLayout : RelativeLayout, titleView : TextView, recyclerView: RecyclerView,){
+        FirebaseFirestore.getInstance().collection("sections")
+            .document(id)
+            .get().addOnSuccessListener {
+                //get most played songs
+                FirebaseFirestore.getInstance().collection("songs")
+                    .orderBy("count",Query.Direction.DESCENDING)
+                    .limit(5)
+                    .get().addOnSuccessListener {songListSnapshot->
+                        val songsModelList = songListSnapshot.toObjects<SongModel>()
+                        val songsIdList = songsModelList.map{
+                            it.id
+                        }.toList()
+                        val section = it.toObject(CategoryModel::class.java)
+                        section?.apply {
+                            section.songs = songsIdList
+                            mainLayout.visibility = android.view.View.VISIBLE
+                            titleView.text = name
+                            recyclerView.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                            recyclerView.adapter = SectionSongListAdapter(songs)
+                            mainLayout.setOnClickListener {
+                                SongsListActivity.category1 = section
+                                startActivity(Intent(this@MainActivity,SongsListActivity::class.java))
+                            }
+                        }
+                    }
+            }
     }
 }

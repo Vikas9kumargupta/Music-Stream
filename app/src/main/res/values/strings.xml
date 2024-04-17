@@ -2,4 +2,14 @@
     <string name="app_name">Music Stream</string>
     <string name="categories">Categories</string>
     <string name="album">Album</string>
+    <string name="settings">Settings</string>
+    <string name="logout">LogOut</string>
+    <string name="you_are_already_registered">Already hava an account? </string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="explore_latest_hits_only_on">Explore latest hits only on</string>
+    <string name="music_stream">Music Stream</string>
+    <string name="_login"> LOGIN </string>
 </resources>

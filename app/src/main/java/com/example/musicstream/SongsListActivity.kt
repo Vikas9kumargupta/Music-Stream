@@ -18,8 +18,8 @@ class SongsListActivity : AppCompatActivity() {
     companion object{
         lateinit var category1 : CategoryModel
     }
-    lateinit var binding: ActivitySongsListBinding
-    lateinit var songsListAdapter: SongsListAdapter
+    private lateinit var binding: ActivitySongsListBinding
+    private lateinit var songsListAdapter: SongsListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySongsListBinding.inflate(layoutInflater)
@@ -34,7 +34,7 @@ class SongsListActivity : AppCompatActivity() {
         setupSongsListRecyclerView()
     }
 
-    fun setupSongsListRecyclerView(){
+    private fun setupSongsListRecyclerView(){
         songsListAdapter = SongsListAdapter(category1.songs)
         binding.songsListRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.songsListRecyclerView.adapter = songsListAdapter
