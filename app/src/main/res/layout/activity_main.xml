@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
+            android:text="@string/welcome_back"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:gravity="center"/>
@@ -215,7 +215,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/song_title_text_view"
             android:layout_height="wrap_content"
-            android:text="Now Playing : "
+            android:text="@string/now_playing"
             android:layout_toEndOf="@id/song_cover_image_view"
             android:paddingStart="16dp"
             android:layout_centerVertical="true"

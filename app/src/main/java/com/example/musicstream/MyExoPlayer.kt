@@ -17,7 +17,7 @@ object MyExoPlayer {
         return exoplayer
     }
 
-    fun updateCount(){
+    private fun updateCount(){
         currentSong?.id?.let { id->
             FirebaseFirestore.getInstance().collection("songs")
                 .document(id)
@@ -26,7 +26,7 @@ object MyExoPlayer {
                     if(latestCount==null){
                         latestCount = 1L
                     }else{
-                        latestCount = latestCount+1
+                        latestCount += 1
                     }
                     FirebaseFirestore.getInstance().collection("songs")
                         .document(id)

@@ -13,6 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
         android:text="Now Playing"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -24,17 +25,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="142dp"
-            android:layout_height="142dp"
+            android:layout_width="167dp"
+            android:layout_height="168dp"
             android:scaleType="centerCrop"
+            android:layout_marginTop="18dp"
+            android:foregroundGravity="center_horizontal"
+            android:padding="2dp"
             android:id="@+id/song_cover_image_view"
             android:layout_gravity="center"
             />
         <ImageView
-            android:layout_width="220dp"
-            android:layout_height="220dp"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:padding="2dp"
+            android:foregroundGravity="center_horizontal"
             android:scaleType="centerCrop"
-            android:layout_marginTop="10sp"
+            android:layout_marginTop="20sp"
             android:visibility="invisible"
             android:layout_gravity="center"
             android:id="@+id/song_gif_image_view"
@@ -48,7 +54,7 @@
         android:textSize="22sp"
         android:text="Song Name"
         android:textColor="@color/white"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="13dp"
         android:textStyle="bold"
         android:id="@+id/song_title_text_view"/>
 
@@ -65,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/player_view"
-        android:layout_marginTop="8sp"
+        android:layout_marginTop="30sp"
         android:layout_marginHorizontal="20dp"
         app:hide_on_touch="false"
         app:show_timeout="0"

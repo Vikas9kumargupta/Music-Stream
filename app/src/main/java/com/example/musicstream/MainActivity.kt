@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         binding.optionBtn.setOnClickListener{
             showPopupMenu()
         }
-
     }
 
     private fun showPopupMenu() {
@@ -54,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.logout ->{
                     logout()
-                    true
                 }
             }
             false

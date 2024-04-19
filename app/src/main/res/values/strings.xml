@@ -12,4 +12,6 @@
     <string name="explore_latest_hits_only_on">Explore latest hits only on</string>
     <string name="music_stream">Music Stream</string>
     <string name="_login"> LOGIN </string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="now_playing">Now Playing :</string>
 </resources>
