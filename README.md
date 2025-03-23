@@ -40,6 +40,14 @@ Music Stream is a modern and user-friendly Android application that allows users
 
 ## Screenshots
 
+<p align="left">
+  <img src="https://github.com/Vikas9kumargupta/Music-Stream/blob/master/music_stream1.jpg" width="120" height="200" hspace="10">
+  <img src="https://github.com/Vikas9kumargupta/Music-Stream/blob/master/music_stream2.jpg" width="120" height="200" hspace="10">
+  <img src="https://github.com/Vikas9kumargupta/Music-Stream/blob/master/music_stream3.jpg" width="120" height="200" hspace="10">
+  <img src="https://github.com/Vikas9kumargupta/Music-Stream/blob/master/music_stream4.jpg" width="120" height="200" hspace="10">
+  <img src="https://github.com/Vikas9kumargupta/Music-Stream/blob/master/music_stram5.jpg" width="120" height="200" hspace="10">
+</p>
+
 
 
 ## Future Enhancements
